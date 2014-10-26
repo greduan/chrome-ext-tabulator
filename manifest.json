@@ -3,16 +3,22 @@
   "name": "Tabs Should Rest",
   "version": "0.0.0",
 
-  "default_locale": "en",
   "description": "Like OneTab but leaner, meaner and FOSS",
   "icons": {},
 
-  "browser_action": {},
+  "browser_action": {
+    "default_title": "Tabs Should Rest",
+    "default_popup": "src/popup.html"
+  },
 
   "background": {
+    "page": "src/background.html",
+    "script": "src/js/background.js",
     "persistent": false
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage",
+    "activeTab"
   ]
 }

@@ -1,0 +1,17 @@
+#container {
+	font-family: Helvetica, sans-serif;
+	color: #333;
+	width: 200px;
+	padding: 10px;
+}
+
+.menu-entry {
+	padding: 10px;
+	border: 1px solid #333;
+	margin-bottom: 10px;
+	border-radius: 3px;
+}
+
+.menu-entry:hover {
+	cursor: pointer;
+}
