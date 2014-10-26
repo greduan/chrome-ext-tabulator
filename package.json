@@ -1,0 +1,12 @@
+{
+  "name": "chrome-ext-tabs-should-rest",
+  "version": "0.0.0",
+  "license": "ISC",
+  "author": "Greduan <eduan@websharks-inc.com> (http://greduan.com)",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-jslint": "^0.1.7"
+  }
+}
