@@ -12,8 +12,7 @@
   },
 
   "background": {
-    "page": "src/background.html",
-    "script": "src/js/background.js",
+    "scripts": ["src/js/background.js"],
     "persistent": false
   },
   "permissions": [
