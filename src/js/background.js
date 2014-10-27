@@ -3,20 +3,19 @@
 (function () {
     'use strict';
 
-    var RIPTab = function () {
-    };
+    var ripTabs = function (tabsArr) {
+        var tabsInfo = [];
 
-    var RIPAllTabs = function () {
+        tabsArr.forEach(function (tab) {
+        });
     };
-
-    /*
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabsArr) {
-        // add tab to save list
-    });
-    */
 
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-        console.log(request.action);
+        switch (request.action) {
+        case 'riptabs':
+            ripTabs(request.tabsArr);
+            break;
+        }
     });
 
 }());
