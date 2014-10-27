@@ -38,10 +38,20 @@
         });
     }
 
+    function getTabGroups() {
+        var result;
+
+    }
+
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         switch (request.action) {
         case 'riptabs':
             ripTabs(request.tabsArr);
+            break;
+        case 'gettabgroups':
+            chrome.storage.local.get(function (local) {
+                sendResponse(local.tabGroups);
+            });
             break;
         }
     });

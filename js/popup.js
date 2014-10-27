@@ -20,9 +20,10 @@
             window.close();
         });
 
+        // Main extension page with all the saved tab groups
         document.getElementById('listtabs').addEventListener('click', function () {
             chrome.tabs.create({
-                url: chrome.extension.getURL('tab-groups.html')
+                url: chrome.extension.getURL('tabsshouldrest.html')
             });
             window.close();
         });
