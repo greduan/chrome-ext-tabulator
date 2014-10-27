@@ -3,11 +3,11 @@
 (function () {
     'use strict';
 
-    function makeTabGroup(tabsArr) {
+    function makeTabGroup(TabsArr) {
         var tabsInfo = [],
             tabGroup = { groupDate: new Date() };
 
-        tabsArr.forEach(function (tab) {
+        TabsArr.forEach(function (tab) {
             tabsInfo.push({
                 tabTitle: tab.title,
                 tabUrl: tab.url
@@ -23,21 +23,18 @@
         return tabGroup;
     }
 
-    function ripTabs(tabsArr) {
-        var tabGroup = makeTabGroup(tabsArr),
-            cleanTabGroup = filterTabGroup(tabGroup),
-            result;
+    function ripTabs(TabsArr) {
+        var tabGroup = makeTabGroup(TabsArr),
+            cleanTabGroup = filterTabGroup(tabGroup);
 
-        chrome.storage.sync.get('tabs', function (items) {
-            if (Object.keys(items).length === 0) {
-                result = { tabs: [ cleanTabGroup ] };
+        chrome.storage.local.get(function (local) {
+            if (local.tabGroups !== 'undefined' && local.tabGroups instanceof Array) {
+                local.tabGroups.push(cleanTabGroup);
             } else {
-                result = items.push(cleanTabGroup);
+                local.tabGroups = [ cleanTabGroup ];
             }
 
-            chrome.storage.sync.set(result, function () {
-                console.log('new tab group saved');
-            });
+            chrome.storage.local.set(local);
         });
     }
 
