@@ -25,9 +25,20 @@
 
     function ripTabs(tabsArr) {
         var tabGroup = makeTabGroup(tabsArr),
-            cleanTabGroup = filterTabGroup(tabGroup);
+            cleanTabGroup = filterTabGroup(tabGroup),
+            result;
 
-        console.log(cleanTabGroup);
+        chrome.storage.sync.get('tabs', function (items) {
+            if (Object.keys(items).length === 0) {
+                result = { tabs: [ cleanTabGroup ] };
+            } else {
+                result = items.push(cleanTabGroup);
+            }
+
+            chrome.storage.sync.set(result, function () {
+                console.log('new tab group saved');
+            });
+        });
     }
 
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {

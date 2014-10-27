@@ -19,6 +19,13 @@
             });
             window.close();
         });
+
+        document.getElementById('listtabs').addEventListener('click', function () {
+            chrome.tabs.create({
+                url: chrome.extension.getURL('src/tab-groups.html')
+            });
+            window.close();
+        });
     });
 
 })();
