@@ -3,11 +3,11 @@
 (function () {
     'use strict';
 
-    function makeTabGroup(TabsArr) {
+    function makeTabGroup(tabsArr) {
         var tabsInfo = [],
             tabGroup = { groupDate: new Date() };
 
-        TabsArr.forEach(function (tab) {
+        tabsArr.forEach(function (tab) {
             tabsInfo.push({
                 tabTitle: tab.title,
                 tabUrl: tab.url
@@ -23,8 +23,8 @@
         return tabGroup;
     }
 
-    function ripTabs(TabsArr) {
-        var tabGroup = makeTabGroup(TabsArr),
+    function ripTabs(tabsArr) {
+        var tabGroup = makeTabGroup(tabsArr),
             cleanTabGroup = filterTabGroup(tabGroup);
 
         chrome.storage.local.get(function (local) {
@@ -38,22 +38,10 @@
         });
     }
 
-    function getTabGroups() {
-        var result;
-
-    }
-
-    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-        switch (request.action) {
-        case 'riptabs':
-            ripTabs(request.tabsArr);
-            break;
-        case 'gettabgroups':
-            chrome.storage.local.get(function (local) {
-                sendResponse(local.tabGroups);
-            });
-            break;
-        }
+    chrome.browserAction.onClicked.addListener(function (tab) {
+        chrome.tabs.query({ currentWindow: true }, function (tabsArr) {
+            console.log(tabsArr);
+        });
     });
 
 }());

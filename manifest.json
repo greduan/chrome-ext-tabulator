@@ -7,8 +7,7 @@
   "icons": {},
 
   "browser_action": {
-    "default_title": "Tabs Should Rest",
-    "default_popup": "popup.html"
+    "default_title": "Tabs Should Rest"
   },
 
   "background": {
