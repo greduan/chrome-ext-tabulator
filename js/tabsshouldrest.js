@@ -1,4 +1,4 @@
-/*global chrome */
+/*global chrome, HTML */
 
 (function (H) {
     'use strict';
@@ -7,10 +7,12 @@
 
     function getTabGroups() {
         chrome.runtime.sendMessage({ action: 'gettabgroups' }, function (res) {
-            return res;
+            console.log('got response');
+            console.log(res.tabGroups);
         });
     }
 
-    console.log(getTabGroups());
+    console.log('getting tab groups');
+    getTabGroups();
 
 }(HTML));
