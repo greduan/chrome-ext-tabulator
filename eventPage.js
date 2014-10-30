@@ -23,23 +23,21 @@
         return tabGroup;
     }
 
-    function saveTabGroups(tabGroup) {
-        chrome.storage.local.get(function (local) {
-            if (local.tabGroups !== 'undefined' && local.tabGroups instanceof Array) {
-                local.tabGroups.push(tabGroup);
-            } else {
-                local.tabGroups = [ tabGroup ];
-            }
-
-            chrome.storage.local.set(local);
-        });
+    function saveTabGroup(tabGroup) {
+        if (typeof localStorage.tabGroups !== 'undefined' && Array.isArray(JSON.parse(localStorage.tabGroups))) {
+            var parsedTabGroups = JSON.parse(localStorage.tabGroups);
+            parsedTabGroups.push(tabGroup);
+            localStorage.setItem('tabGroups', JSON.stringify(parsedTabGroups));
+        } else {
+            localStorage.setItem('tabGroups', JSON.stringify([ tabGroup ]));
+        }
     }
 
     function ripTabs(tabsArr) {
         var tabGroup = makeTabGroup(tabsArr),
             cleanTabGroup = filterTabGroup(tabGroup);
 
-        saveTabGroups(cleanTabGroup);
+        saveTabGroup(cleanTabGroup);
     }
 
     chrome.browserAction.onClicked.addListener(function (tab) {
@@ -52,10 +50,7 @@
     chrome.runtime.onMessage.addListener(function (req, sen, sendRes) {
         switch (req.action) {
         case 'gettabgroups':
-            chrome.storage.local.get('tabGroups', function (local) {
-                console.log(local.tabGroups);
-                sendRes({ tabGroups: local.tabGroups });
-            });
+            sendRes({ tabGroups: JSON.parse(localStorage.getItem('tabGroups')) });
             break;
         default:
             sendRes({});
