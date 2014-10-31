@@ -7,6 +7,7 @@
   "icons": {},
 
   "browser_action": {
+    "default_popup": "popup.html",
     "default_title": "Tabs Should Rest"
   },
 
@@ -16,7 +17,9 @@
   },
   "permissions": [
     "tabs",
+    "activeTab",
     "storage",
-    "activeTab"
+    "unlimitedStorage",
+    "contextMenus"
   ]
 }

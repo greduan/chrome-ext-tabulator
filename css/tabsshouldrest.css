@@ -1,0 +1,17 @@
+#container {
+    padding: 10px;
+}
+
+.group {
+    padding-top: 20px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style-type: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
