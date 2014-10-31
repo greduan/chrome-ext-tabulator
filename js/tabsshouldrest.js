@@ -1,4 +1,4 @@
-/*global chrome, localStorage, HTML */
+/*global chrome, windows, localStorage, HTML */
 
 (function (H) {
     'use strict';
@@ -8,17 +8,9 @@
 
     // from the array of Tab objects it makes an object with date and the array
     function makeTabGroup(tabsArr) {
-        var tabsInfo = [],
-            tabGroup = { groupDate: new Date() };
+        var tabGroup = { date: new Date() };
 
-        tabsArr.forEach(function (tab) {
-            tabsInfo.push({
-                tabTitle: tab.title,
-                tabUrl: tab.url
-            });
-        });
-
-        tabGroup.tabs = tabsInfo;
+        tabGroup.tabs = tabsArr;
 
         return tabGroup;
     }
@@ -39,6 +31,16 @@
         }
     }
 
+    function closeTabs(tabsArr) {
+        var tabsToClose = [];
+
+        tabsArr.forEach(function (tab) {
+            tabsToClose.push(tab.id);
+        });
+
+        chrome.tabs.remove(tabsToClose);
+    }
+
     // makes a tab group, filters it and saves it to localStorage
     function ripTabs(tabsArr) {
         var tabGroup = makeTabGroup(tabsArr),
@@ -52,20 +54,25 @@
         chrome.tabs.query({ currentWindow: true }, function (tabsArr) {
             ripTabs(tabsArr); // store current tab group as a new tab group
             // open the background page with the groups list
-            chrome.tabs.create({ url: chrome.extension.getURL('tabsshouldrest.html') });
+            chrome.tabs.create({
+                url: chrome.extension.getURL('tabsshouldrest.html'),
+                windowId: chrome.windows.WINDOW_ID_CURRENT
+            });
+            closeTabs(tabsArr);
         });
     });
 
     // make HTML with the groups
-    JSON.parse(localStorage.tabGroups).forEach(function (group, index) {
+    JSON.parse(localStorage.tabGroups).forEach(function (group, i) {
         groupsDiv.add("div.group");
 
-        curGroupDiv = groupsDiv.query(".group").only(index);
-        curGroupDiv.add("h2").textContent = group.groupDate;
+        curGroupDiv = groupsDiv.query(".group").only(i);
+        curGroupDiv.add("h2").textContent = group.date;
         curGroupDiv.each(function (el) {
             el.add("ul>li*" + group.tabs.length);
             el.ul.li.each(function (el, i) {
-                el.textContent = group.tabs[i].tabTitle;
+                el.add('a[href="' + group.tabs[i].url + '"]');
+                el.a.textContent = group.tabs[i].title;
             });
         });
     });
