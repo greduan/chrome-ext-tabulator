@@ -11,7 +11,7 @@
   },
 
   "background": {
-    "scripts": ["eventPage.js"],
+    "page": "tabsshouldrest.html",
     "persistent": false
   },
   "permissions": [
