@@ -3,12 +3,9 @@
 (function (H) {
     'use strict';
 
-    var groupsDiv = H.query("#groups", 1),
-        curGroupDiv;
-
     // from the array of Tab objects it makes an object with date and the array
     function makeTabGroup(tabsArr) {
-        var tabGroup = { date: new Date('YYYY-MM-DD at hh:mm:dd') };
+        var tabGroup = { date: new Date() };
 
         tabGroup.tabs = tabsArr;
 
@@ -52,35 +49,29 @@
 
     // open the background page with the groups list in the current window
     // opening it now so window doesn't close because of lack of tabs
-    function openBackgroundPage() {        
+    function openBackgroundPage() {
         chrome.tabs.create({
             url: chrome.extension.getURL('tabsshouldrest.html'),
             windowId: chrome.windows.WINDOW_ID_CURRENT
         });
     }
 
-    // listen for when the browser action is clicked
-    // chrome.browserAction.onClicked.addListener(function (tab) {
-    //     chrome.tabs.query({ currentWindow: true }, function (tabsArr) {
-    //         ripTabs(tabsArr);
-    //         openBackgroundPage();
-    //         closeTabs(tabsArr);
-    //     });
-    // });
-
-    // make HTML with the groups
-    JSON.parse(localStorage.tabGroups).forEach(function (group, i) {
-        groupsDiv.add('div.group'); // one div per group
-
-        curGroupDiv = groupsDiv.query('.group').only(i); // current group
-        curGroupDiv.add('h2').textContent = 'Created: ' + group.date; // add h2
-        curGroupDiv.each(function (el) { // current div
-            el.add('ul>li*' + group.tabs.length); // add ul and lis
-            el.ul.li.each(function (el, i) { // for each li
-                el.add('a[href="' + group.tabs[i].url + '"]'); // add an anchor
-                el.a.textContent = group.tabs[i].title; // add text to anchor
-            });
-        });
+    // listen for messages from popup
+    chrome.runtime.onMessage.addListener(function (req, sender, sendRes) {
+        switch (req.action) {
+        case 'rip':
+            ripTabs(req.tabsArr);
+            openBackgroundPage();
+            closeTabs(req.tabsArr);
+            sendRes('ok'); // acknowledge
+            break;
+        case 'openbackgroundpage':
+            openBackgroundPage();
+            sendRes('ok'); // acknowledge
+            break;
+        default:
+            sendRes('nothing'); // acknowledge
+        }
     });
 
 }(HTML));
