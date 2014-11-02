@@ -1,0 +1,8 @@
+{
+  "name": "chrome-ext-tabs-should-rest",
+  "private": true,
+  "dependencies": {
+    "mithriljs": "^0.1.22",
+    "HTML": "0^.12.1"
+  }
+}
