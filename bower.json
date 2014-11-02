@@ -3,6 +3,6 @@
   "private": true,
   "dependencies": {
     "mithriljs": "^0.1.22",
-    "HTML": "0^.12.1"
+    "HTML": "^0.12.1"
   }
 }

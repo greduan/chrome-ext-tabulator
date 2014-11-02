@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', (function (H) {
     'use strict';
 
+    /*
     var groupsDiv = H.query("#groups", 1),
         curGroupDiv;
 
@@ -29,5 +30,11 @@ document.addEventListener('DOMContentLoaded', (function (H) {
             console.log(el.getAttribute('data-tab-id'));
         });
     });
+    */
+
+    var groups = {};
+
+    groups.Group = function () {
+    };
 
 }(HTML)));

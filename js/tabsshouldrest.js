@@ -1,11 +1,14 @@
-/*global chrome, windows, localStorage, HTML */
+/*global chrome, localStorage */
 
-(function (H) {
+(function () {
     'use strict';
 
     // from the array of Tab objects it makes an object with date and the array
     function makeTabGroup(tabsArr) {
-        var tabGroup = { date: new Date() };
+        var tabGroup = {
+                date: new Date(),
+                id: Date.now() // clever way to get a unique and quick ID
+            };
 
         tabGroup.tabs = tabsArr;
 
@@ -74,4 +77,4 @@
         }
     });
 
-}(HTML));
+}());
