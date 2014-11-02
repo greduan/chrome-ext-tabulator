@@ -1,4 +1,4 @@
-/*global HTML */
+/*global chrome */
 
 document.addEventListener('DOMContentLoaded', (function () {
     'use strict';

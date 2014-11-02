@@ -1,5 +1,6 @@
 #container {
     padding: 10px;
+	margin-left: 50px;
 }
 
 .group {
@@ -14,4 +15,27 @@ li {
     list-style-type: none;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+li a {
+	margin-left: 10px;
+}
+
+/* default styles */
+li .delete-link {
+	font-size: .9em;
+	font-weight: bold;
+	color: white;
+	background: #eee;
+
+	display: inline-block;
+	border-radius: 1em;
+	padding: 0 .3em;
+}
+li .delete-link:before {
+	content: "X";
+}
+li .delete-link:hover {
+	background: red;
+	cursor: pointer;
 }

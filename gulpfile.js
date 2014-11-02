@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var jslint = require('gulp-jslint');
 
 gulp.task('jslint', function () {
-    gulp.src(['eventPage.js', 'js/tabsshouldrest.js'])
+    gulp.src(['js/popup.js', 'js/tabsshouldrest.js', 'js/ui.js'])
         .pipe(jslint({
             browser: true,
             todo: true,
