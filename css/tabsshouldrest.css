@@ -21,7 +21,6 @@ li a {
 	margin-left: 10px;
 }
 
-/* default styles */
 li .delete-link {
 	font-size: .9em;
 	font-weight: bold;
@@ -34,6 +33,9 @@ li .delete-link {
 }
 li .delete-link:before {
 	content: "X";
+}
+li:hover .delete-link {
+	background: #aaa;
 }
 li .delete-link:hover {
 	background: red;
