@@ -37,4 +37,6 @@ document.addEventListener('DOMContentLoaded', (function (H) {
     groups.Group = function () {
     };
 
+    todo.GroupList = Array;
+
 }(HTML)));
