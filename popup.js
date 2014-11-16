@@ -1,6 +1,4 @@
-/*global chrome */
-
-document.addEventListener('DOMContentLoaded', (function () {
+;(function () {
     'use strict';
 
     // current tab
@@ -19,10 +17,10 @@ document.addEventListener('DOMContentLoaded', (function () {
         window.close();
     });
 
-    // show RIPd tabs
+    // open background page
     document.getElementById('open-background-page').addEventListener('click', function () {
         chrome.runtime.sendMessage({ action: 'openbackgroundpage' });
         window.close();
     });
 
-}()));
+}());
