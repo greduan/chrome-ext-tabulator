@@ -24,8 +24,8 @@
 
             vm.rmTab = function (i, ii) {
                 // remove from array
-                // vm.list[i].tabs.splice(ii, 1);
-                console.log(i, ii)
+                console.log(vm.list)
+                vm.list[i].tabs().splice(ii, 1);
             };
         };
         return vm;
@@ -47,7 +47,9 @@
                     // foreach tab
                     m('ul', group.tabs().map(function (tab, ii) {
                         return m('li', [
-                            m('div.delete-link', { onclick: 'tabs.vm.rmTab(i, ii)' }),
+                            m('div.delete-link', { onclick: function () {
+                                tabs.vm.rmTab(i, ii);
+                            } }),
                             m('a', { href: tab.url }, tab.title)
                         ]);
                     }))
