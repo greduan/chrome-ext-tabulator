@@ -66,6 +66,15 @@ li {
 	cursor: pointer;
 }
 
+a, a:visited {
+	color: blue;
+	text-decoration: none;
+	padding: .2em;
+}
+a:hover {
+	text-decoration: underline;
+}
+
 /**/
 /* HEADER STYLES */
 /**/
