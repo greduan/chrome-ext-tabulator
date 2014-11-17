@@ -63,7 +63,9 @@
                         m('span.delete-link', { onclick: function () {
                             tabs.vm.rmGroup(i);
                         } }),
-                        group.date()
+                        m('span.group-amount', group.tabs().length + ' Tabs'),
+                        ' ',
+                        m('span.group-date', moment(group.date()).format('HH:mm:ss YYYY-MM-DD'))
                     ]),
                     // foreach tab
                     m('ul', group.tabs().map(function (tab, ii) {
