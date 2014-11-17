@@ -59,8 +59,8 @@
             // foreach tab group
             tabs.vm.list.map(function (group, i) {
                 return [
-                    m('div', [
-                        m('div.delete-link', { onclick: function () {
+                    m('div.group-title', [
+                        m('span.delete-link', { onclick: function () {
                             tabs.vm.rmGroup(i);
                         } }),
                         group.date()
@@ -68,7 +68,7 @@
                     // foreach tab
                     m('ul', group.tabs().map(function (tab, ii) {
                         return m('li', [
-                            m('div.delete-link', { onclick: function () {
+                            m('span.delete-link', { onclick: function () {
                                 tabs.vm.rmTab(i, ii);
                             } }),
                             m('a', { href: tab.url }, tab.title)

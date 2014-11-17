@@ -1,23 +1,39 @@
+/**/
+/* GENERAL STYLES */
+/**/
+
+body {
+	background: #fefefe;
+	color: #333;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
 #container {
-    padding: 10px;
+	margin: 3%;
+	padding: 5px;
+	font-family: Liberation Sans, sans-serif;
+}
+
+/**/
+/* GROUPS RELATED STYLES */
+/**/
+
+#groups {
+	margin: 10px 0;
+	padding-left: 10px;
 }
 
 .group {
-    padding-top: 20px;
+	margin-top: 10px;
 }
 
 ul {
-    padding-left: 0;
+	margin-left: 2em;
 }
 
 li {
-    list-style-type: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-li a {
-	margin-left: 10px;
+	list-style-type: none;
 }
 
 .delete-link {
@@ -29,6 +45,7 @@ li a {
 	display: inline-block;
 	border-radius: 1em;
 	padding: 0 .3em;
+	margin-right: 10px;
 }
 .delete-link:before {
 	content: "X";
@@ -39,4 +56,25 @@ li a {
 .delete-link:hover {
 	background: red;
 	cursor: pointer;
+}
+
+/**/
+/* HEADER STYLES */
+/**/
+
+h1 {
+	font-size: 3em;
+}
+
+header {
+	border-bottom: 1px solid #f6f6f6;
+}
+
+/**/
+/* FOOTER STYLES */
+/**/
+
+footer {
+	border-top: 1px solid #f6f6f6;
+	padding: 5px 0;
 }
