@@ -27,8 +27,8 @@
             vm.list = new tabs.TabGroupsList();
 
             vm.rmGroup = function (i) {
-                // remove from array
-                //vm.list.splice(i, 1);
+                // remove view from array
+                vm.list.splice(i, 1);
                 // remove from localStorage
                 parsedTabGroups.splice(i, 1)
                 // save
