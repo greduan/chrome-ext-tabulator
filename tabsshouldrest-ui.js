@@ -22,9 +22,13 @@
             // list of tab groups
             vm.list = new tabs.TabGroupsList();
 
+            vm.rmGroup = function (i) {
+                // remove from array
+                vm.list.splice(i, 1);
+            };
+
             vm.rmTab = function (i, ii) {
                 // remove from array
-                console.log(vm.list)
                 vm.list[i].tabs().splice(ii, 1);
             };
         };
@@ -43,7 +47,12 @@
             // foreach tab group
             tabs.vm.list.map(function (group, i) {
                 return [
-                    m('h2', group.date()),
+                    m('div', [
+                        m('div.delete-link', { onclick: function () {
+                            tabs.vm.rmGroup(i);
+                        } }),
+                        group.date()
+                    ]),
                     // foreach tab
                     m('ul', group.tabs().map(function (tab, ii) {
                         return m('li', [

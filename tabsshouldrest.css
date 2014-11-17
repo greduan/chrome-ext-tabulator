@@ -20,7 +20,7 @@ li a {
 	margin-left: 10px;
 }
 
-li .delete-link {
+.delete-link {
 	font-size: .9em;
 	font-weight: bold;
 	color: white;
@@ -30,13 +30,13 @@ li .delete-link {
 	border-radius: 1em;
 	padding: 0 .3em;
 }
-li .delete-link:before {
+.delete-link:before {
 	content: "X";
 }
-li:hover .delete-link {
+*:hover > .delete-link {
 	background: #aaa;
 }
-li .delete-link:hover {
+.delete-link:hover {
 	background: red;
 	cursor: pointer;
 }
