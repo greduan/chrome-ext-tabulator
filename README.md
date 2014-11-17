@@ -18,6 +18,10 @@ I am not yet going to provide usage or installation instructions as this is not
 yet ready for use, and at this point if you want to use it you really should be
 the kind of user who knows how to do this already. :)
 
+A screenshot of the semi-current progress:
+
+![Screenshot of the groups page](/images/screenshot.jpg)
+
 ## License
 
 This project is licensed under the [permissive][per] [ISC license][lic].  You
