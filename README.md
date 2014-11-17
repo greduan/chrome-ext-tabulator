@@ -10,9 +10,7 @@ OneTab.  For example OneTab runs constantly, while this runs only when it's
 called or the tab groups page is displayed.  (Event pages [this] vs. persistent
 background page [OneTab].)
 
-Currently it is useable but still in development, stuff might break and the
-useable parts are only core parts, the interface is still very
-crude/non-existent.
+Currently it is near to completion but still in development, stuff might break.
 
 I am not yet going to provide usage or installation instructions as this is not
 yet ready for use, and at this point if you want to use it you really should be

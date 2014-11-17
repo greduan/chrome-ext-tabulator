@@ -55,30 +55,28 @@
     };
 
     tabs.view = function () {
-        return m('div.group', [
-            // foreach tab group
-            tabs.vm.list.map(function (group, i) {
-                return [
-                    m('div.group-title', [
+        // foreach tab group
+        return tabs.vm.list.map(function (group, i) {
+            return m('div.group', [
+                m('div.group-title', [
+                    m('span.delete-link', { onclick: function () {
+                        tabs.vm.rmGroup(i);
+                    } }),
+                    m('span.group-amount', group.tabs().length + ' Tabs'),
+                    ' ',
+                    m('span.group-date', moment(group.date()).format('HH:mm:ss YYYY-MM-DD'))
+                ]),
+                // foreach tab
+                m('ul', group.tabs().map(function (tab, ii) {
+                    return m('li', [
                         m('span.delete-link', { onclick: function () {
-                            tabs.vm.rmGroup(i);
+                            tabs.vm.rmTab(i, ii);
                         } }),
-                        m('span.group-amount', group.tabs().length + ' Tabs'),
-                        ' ',
-                        m('span.group-date', moment(group.date()).format('HH:mm:ss YYYY-MM-DD'))
-                    ]),
-                    // foreach tab
-                    m('ul', group.tabs().map(function (tab, ii) {
-                        return m('li', [
-                            m('span.delete-link', { onclick: function () {
-                                tabs.vm.rmTab(i, ii);
-                            } }),
-                            m('a', { href: tab.url }, tab.title)
-                        ]);
-                    }))
-                ];
-            })
-        ]);
+                        m('a', { href: tab.url }, tab.title)
+                    ]);
+                }))
+            ]);
+        });
     };
 
     // init the app

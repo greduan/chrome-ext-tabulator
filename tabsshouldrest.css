@@ -24,8 +24,11 @@ body {
 	padding-left: 10px;
 }
 
-.group {
+.group:first-of-type {
 	margin-top: 10px;
+}
+.group {
+	margin-top: 20px;
 }
 
 .group-amount {

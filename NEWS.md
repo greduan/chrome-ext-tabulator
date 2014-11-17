@@ -2,6 +2,13 @@
 
 All changes that would affect users will be listed in this file.
 
+## 0.3.0-alpha - 2014-11-17
+
+This version provides a nice looking interface to the saved tab groups.
+
+Pretty near to the full release now.  Some kinks still have to be figured out
+and refactoring is still to come.
+
 ## 0.2.0-alpha - 2014-11-17
 
 Implemented an MVC interface using Mithril.js.  Spent all yesterday studying and
