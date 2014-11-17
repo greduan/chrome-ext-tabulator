@@ -4,6 +4,10 @@
     var tabs = {}, // to-be module
         parsedTabGroups = JSON.parse(localStorage.tabGroups); // tab groups
 
+    function saveTabGroups(json) {
+        localStorage.setItem('tabGroups', JSON.stringify(json));
+    }
+
     // model entity
     // 'data' is meant to be a tab group object from localStorage
     tabs.TabGroup = function (data) {
@@ -16,7 +20,7 @@
     tabs.TabGroupsList = Array;
 
     // view-model
-    tabs.vm = new function() {
+    tabs.vm = new function () {
         var vm = {};
         vm.init = function () {
             // list of tab groups
@@ -24,12 +28,20 @@
 
             vm.rmGroup = function (i) {
                 // remove from array
-                vm.list.splice(i, 1);
+                //vm.list.splice(i, 1);
+                // remove from localStorage
+                parsedTabGroups.splice(i, 1)
+                // save
+                saveTabGroups(parsedTabGroups);
             };
 
             vm.rmTab = function (i, ii) {
-                // remove from array
-                vm.list[i].tabs().splice(ii, 1);
+                // remove from view array
+                //vm.list[i].tabs().splice(ii, 1);
+                // remove from localStorage
+                parsedTabGroups[i].tabs.splice(ii, 1);
+                // save
+                saveTabGroups(parsedTabGroups);
             };
         };
         return vm;
