@@ -74,7 +74,7 @@
                         } }),
                         m('img', { src: tab.favIconUrl, height: '16', width: '16' }),
                         ' ',
-                        m('a', { href: tab.url }, tab.title)
+                        m('a', { href: tab.url, target: '_blank' }, tab.title)
                     ]);
                 }))
             ]);
