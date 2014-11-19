@@ -56,6 +56,9 @@
     };
 
     tabs.view = function () {
+        if (tabs.vm.list.length === 0) {
+            return 'No tab groups have been saved yet...'
+        }
         // foreach tab group
         return tabs.vm.list.map(function (group, i) {
             return m('div.group', [

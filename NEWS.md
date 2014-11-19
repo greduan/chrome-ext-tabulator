@@ -2,6 +2,16 @@
 
 All changes that would affect users will be listed in this file.
 
+## 0.4.0.alpha - 2014-11-19
+
+This version got a change name.  No more "Tabs Should Rest", now it's called
+"Tabulator".  Look up the definitions and etymology for "tabulate" (verb) and
+you may I understand why I chose that name.
+
+The code also got some refactoring.  The links for tab groups now show a favicon
+next to the title/URL.  I do still need to add some kind of caching mechanism
+for that though...
+
 ## 0.3.0-alpha - 2014-11-17
 
 This version provides a nice looking interface to the saved tab groups.
