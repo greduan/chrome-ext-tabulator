@@ -12,6 +12,8 @@ The code also got some refactoring.  The links for tab groups now show a favicon
 next to the title/URL.  I do still need to add some kind of caching mechanism
 for that though...
 
+The links in tab groups now open in a new tab (`target="_blank"`).
+
 ## 0.3.0-alpha - 2014-11-17
 
 This version provides a nice looking interface to the saved tab groups.
