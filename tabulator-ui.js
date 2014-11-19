@@ -48,8 +48,9 @@
     };
 
     tabs.controller = function () {
+        var i;
         tabs.vm.init();
-        for (var i = 0; i < parsedTabGroups.length; i += 1) {
+        for (i = 0; i < parsedTabGroups.length; i += 1) {
             tabs.vm.list.push(new tabs.TabGroup(parsedTabGroups[i]));
         }
     };

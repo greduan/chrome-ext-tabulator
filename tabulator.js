@@ -31,17 +31,22 @@
 
     // close all the tabs in the provided array of Tab objects
     function closeTabs(tabsArr) {
-        var tabsToClose = [];
+        var tabsToClose = [],
+            i;
 
-        tabsArr.forEach(function (tab) {
-            tabsToClose.push(tab.id);
+        for (i = 0; i < tabsArr.length; i += 1) {
+            tabsToClose.push(tabsArr[i].id);
+        }
+
+        chrome.tabs.remove(tabsToClose, function () {
+            if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError)
+            }
         });
-
-        chrome.tabs.remove(tabsToClose);
     }
 
     // makes a tab group, filters it and saves it to localStorage
-    function ripTabs(tabsArr) {
+    function saveTabs(tabsArr) {
         var tabGroup = makeTabGroup(tabsArr),
             cleanTabGroup = filterTabGroup(tabGroup);
 
@@ -49,18 +54,15 @@
     }
 
     function openBackgroundPage() {
-        chrome.tabs.create({
-            url: chrome.extension.getURL('tabulator.html'),
-            windowId: chrome.windows.WINDOW_ID_CURRENT
-        });
+        chrome.tabs.create({ url: chrome.extension.getURL('tabulator.html') });
     }
 
     // listen for messages from popup
     chrome.runtime.onMessage.addListener(function (req, sender, sendRes) {
         switch (req.action) {
-        case 'rip':
-            ripTabs(req.tabsArr);
-            openBackgroundPage();
+        case 'save':
+            saveTabs(req.tabsArr);
+            openBackgroundPage(); // opening now so window doesn't close
             closeTabs(req.tabsArr);
             sendRes('ok'); // acknowledge
             break;
@@ -69,7 +71,8 @@
             sendRes('ok'); // acknowledge
             break;
         default:
-            sendRes('nothing'); // acknowledge
+            sendRes('nope'); // acknowledge
+            break;
         }
     });
 
