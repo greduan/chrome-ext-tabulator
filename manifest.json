@@ -1,18 +1,18 @@
 {
   "manifest_version": 2,
-  "name": "Tabs Should Rest",
+  "name": "Tabulator",
   "version": "0.3.0",
 
-  "description": "Like OneTab but leaner, meaner and FOSS",
+  "description": "Like OneTab but leaner and FOSS",
   "icons": {},
 
   "browser_action": {
     "default_popup": "popup.html",
-    "default_title": "Tabs Should Rest"
+    "default_title": "Tabulator"
   },
 
   "background": {
-    "page": "tabsshouldrest.html",
+    "page": "tabulator.html",
     "persistent": false
   },
   "permissions": [

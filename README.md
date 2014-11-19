@@ -1,8 +1,8 @@
-# Tabs Should Rest
+# Tabulator
 
 [![Gratipay (Gittip) for Greduan](http://img.shields.io/gratipay/Greduan.svg)](https://gratipay.com/Greduan/)
 
-Like OneTab but leaner and FOSS.  Named "Tabs Should Rest", final name pending.
+Like OneTab but leaner and FOSS.  Named "Tabulator", final name pending.
 
 It started out with the idea of being a OneTab clone where I would release the
 source code but immediately I found stuff I could do better and lighter than

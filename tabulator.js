@@ -50,7 +50,7 @@
 
     function openBackgroundPage() {
         chrome.tabs.create({
-            url: chrome.extension.getURL('tabsshouldrest.html'),
+            url: chrome.extension.getURL('tabulator.html'),
             windowId: chrome.windows.WINDOW_ID_CURRENT
         });
     }
