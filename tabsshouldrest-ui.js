@@ -72,6 +72,8 @@
                         m('span.delete-link', { onclick: function () {
                             tabs.vm.rmTab(i, ii);
                         } }),
+                        m('img', { src: tab.favIconUrl, height: '16', width: '16' }),
+                        ' ',
                         m('a', { href: tab.url }, tab.title)
                     ]);
                 }))

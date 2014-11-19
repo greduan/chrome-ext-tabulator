@@ -15,7 +15,7 @@ Implemented an MVC interface using Mithril.js.  Spent all yesterday studying and
 figuring out what MVCs are, how Mithril.js fits into the whole scene etc.
 Really cool project.
 
-Anyway the changes are basically.  Now you can remove tabs or groups of tabs by
+Anyway the changes are basically, now you can remove tabs or groups of tabs by
 clicking the X to the left of the group/tab.
 
 ## 0.1.0-alpha - 2014-11-01

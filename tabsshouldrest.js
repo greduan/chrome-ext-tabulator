@@ -13,7 +13,7 @@
         return tabGroup;
     }
 
-    // filters tabGroup for stuff like pinned tabs, chrome:// tabs etc.
+    // filters tabGroup for stuff like pinned tabs, chrome:// tabs, etc.
     function filterTabGroup(tabGroup) {
         return tabGroup;
     }
@@ -29,7 +29,7 @@
         }
     }
 
-    // close all the tabs found in the array of Tab objects
+    // close all the tabs in the provided array of Tab objects
     function closeTabs(tabsArr) {
         var tabsToClose = [];
 
@@ -48,8 +48,6 @@
         saveTabGroup(cleanTabGroup);
     }
 
-    // open the background page with the groups list in the current window
-    // opening it now so window doesn't close because of lack of tabs
     function openBackgroundPage() {
         chrome.tabs.create({
             url: chrome.extension.getURL('tabsshouldrest.html'),
