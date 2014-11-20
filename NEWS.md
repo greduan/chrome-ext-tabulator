@@ -2,7 +2,13 @@
 
 All changes that would affect users will be listed in this file.
 
-## 0.4.0.alpha - 2014-11-19
+## 0.5.0-alpha - 2014-11-20
+
+Just some changes to the code.  It now saves tab groups to `chrome.storage.sync`
+instead of `localStorage`.  The changes to the code had to be made in order to
+account for the async nature of `chrome.storage.sync`.
+
+## 0.4.0-alpha - 2014-11-19
 
 This version got a change name.  No more "Tabs Should Rest", now it's called
 "Tabulator".  Look up the definitions and etymology for "tabulate" (verb) and
