@@ -20,13 +20,18 @@
 
     // saves array (of Tab objects) to localStorage
     function saveTabGroup(tabGroup) {
-        if (!(localStorage.tabGroups === undefined) && Array.isArray(JSON.parse(localStorage.tabGroups))) {
-            var parsedTabGroups = JSON.parse(localStorage.tabGroups);
-            parsedTabGroups.push(tabGroup);
-            localStorage.setItem('tabGroups', JSON.stringify(parsedTabGroups));
-        } else {
-            localStorage.setItem('tabGroups', JSON.stringify([ tabGroup ]));
-        }
+        chrome.storage.sync.get('tabGroups', function (storage) {
+            var newArr;
+
+            if (storage.tabGroups) {
+                newArr = storage.tabGroups;
+                newArr.push(tabGroup);
+
+                chrome.storage.sync.set({ tabGroups: newArr });
+            } else {
+                chrome.storage.sync.set({ tabGroups: [ tabGroup ] });
+            }
+        });
     }
 
     // close all the tabs in the provided array of Tab objects
