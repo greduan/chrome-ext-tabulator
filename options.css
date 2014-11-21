@@ -19,15 +19,32 @@ body {
 /* OPTIONS RELATED STYLES */
 /**/
 
-.option {
-	margin: 20px 0;
+#options {
+	padding: 20px 0;
 }
+
+.option {
+	margin: 15px 0;
+}
+.option:first-of-type {
+	margin-top: 0;
+}
+
+/* .option > */
 .desc {
 	font-size: 1.1em;
 	margin-bottom: 5px;
 }
 .choices {
 	font-size: .9em;
+}
+
+#saved {
+	display: none;
+	background: green;
+	color: white;
+	width: 300px;
+	margin-top: 15px;
 }
 
 /**/
