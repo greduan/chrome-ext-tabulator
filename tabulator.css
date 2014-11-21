@@ -39,6 +39,15 @@ body {
 	opacity: 0.7;
 }
 
+.restore-all {
+	margin-left: 5px;
+	cursor: pointer;
+}
+.restore-all:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
 ul {
 	margin-left: 2em;
 }

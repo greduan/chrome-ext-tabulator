@@ -64,8 +64,10 @@
             if (tabs.vm.list.length === 0) {
                 return m('p', 'No tab groups have been saved yet, or you deleted them all...');
             }
+
             // foreach tab group
             return tabs.vm.list.map(function (group, i) {
+                // group
                 return m('div.group', [
                     m('div.group-title', [
                         m('span.delete-link', { onclick: function () {
@@ -73,8 +75,23 @@
                         } }),
                         m('span.group-amount', group.tabs().length + ' Tabs'),
                         ' ',
-                        m('span.group-date', moment(group.date()).format('HH:mm:ss, YYYY-MM-DD'))
+                        m('span.group-date', moment(group.date()).format('HH:mm:ss, YYYY-MM-DD')),
+                        ' ',
+                        m('span.restore-all', { onclick: function () {
+                            var i;
+
+                            // reason this goes first and not after is because it doesn't work otherwise
+                            // I imagine it's because you changed tab and stuff
+                            if (opts.deleteTabOnOpen === 'yes') {
+                                tabs.vm.rmGroup(i);
+                            }
+
+                            for (i = 0; i < group.tabs().length; i += 1) {
+                                chrome.tabs.create({ url: group.tabs()[i].url });
+                            }
+                        } }, 'Restore all')
                     ]),
+
                     // foreach tab
                     m('ul', group.tabs().map(function (tab, ii) {
                         return m('li', [
