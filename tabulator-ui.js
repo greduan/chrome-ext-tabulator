@@ -1,10 +1,13 @@
 ;(function (m) {
     'use strict';
 
-    chrome.storage.sync.get('tabGroups', function (storage) {
+    chrome.storage.sync.get(function (storage) {
 
         var tabs = {}, // to-be module
-            tabGroups = storage.tabGroups || []; // tab groups
+            tabGroups = storage.tabGroups || [], // tab groups
+            opts = storage.options || {
+                deleteTabOnOpen: 'no'
+            };
 
         function saveTabGroups(json) {
             chrome.storage.sync.set({ tabGroups: json });
@@ -80,7 +83,11 @@
                             } }),
                             m('img', { src: tab.favIconUrl, height: '16', width: '16' }),
                             ' ',
-                            m('a', { href: tab.url, target: '_blank' }, tab.title)
+                            m('a', { href: tab.url, target: '_blank', onclick: function () {
+                                if (opts.deleteTabOnOpen === 'yes') {
+                                    tabs.vm.rmTab(i, ii);
+                                }
+                            } }, tab.title)
                         ]);
                     }))
                 ]);

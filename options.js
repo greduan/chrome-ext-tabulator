@@ -5,7 +5,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         chrome.storage.sync.get('options', function (storage) {
-            var opts = storage.options;
+            var opts = storage.options || {};
 
             if (opts.deleteTabOnOpen === undefined) {
                 $('input[name="deleteTabOnOpen"][value="no"]').prop('checked', 'checked');
