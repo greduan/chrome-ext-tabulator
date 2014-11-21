@@ -89,7 +89,7 @@
                             for (i = 0; i < group.tabs().length; i += 1) {
                                 chrome.tabs.create({ url: group.tabs()[i].url });
                             }
-                        } }, 'Restore all')
+                        } }, 'Restore group')
                     ]),
 
                     // foreach tab

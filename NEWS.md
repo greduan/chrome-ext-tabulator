@@ -2,6 +2,14 @@
 
 All changes that would affect users will be listed in this file.
 
+## 0.6.0-alpha - 2014-11-20
+
+Added Options page along with one option.  Which dictates whether a tab (or
+group) should be removed from the tabGroups stuff when it gets clicked on.
+
+Also implemented functionality that respects this option and a "Restore group"
+thing after the tab group date.
+
 ## 0.5.0-alpha - 2014-11-20
 
 Just some changes to the code.  It now saves tab groups to `chrome.storage.sync`
