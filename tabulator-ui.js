@@ -87,7 +87,10 @@
                             }
 
                             for (i = 0; i < group.tabs().length; i += 1) {
-                                chrome.tabs.create({ url: group.tabs()[i].url });
+                                chrome.tabs.create({
+                                    url: group.tabs()[i].url,
+                                    pinned: group.tabs()[i].pinned
+                                });
                             }
                         } }, 'Restore group')
                     ]),
@@ -100,10 +103,15 @@
                             } }),
                             m('img', { src: tab.favIconUrl, height: '16', width: '16' }),
                             ' ',
-                            m('a', { href: tab.url, target: '_blank', onclick: function () {
+                            m('span.link', { onclick: function () {
                                 if (opts.deleteTabOnOpen === 'yes') {
                                     tabs.vm.rmTab(i, ii);
                                 }
+
+                                chrome.tabs.create({
+                                    url: tab.url,
+                                    pinned: tab.pinned
+                                });
                             } }, tab.title)
                         ]);
                     }))

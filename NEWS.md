@@ -2,6 +2,13 @@
 
 All changes that would affect users will be listed in this file.
 
+## 0.7.0-alpha - 2014-11-26
+
+Fixed some bugs with which tab gets open.  Changed approach to opening a link
+that is clicked on.
+
+Tabs that were pinned when saved are now pinned when restored.
+
 ## 0.6.0-alpha - 2014-11-20
 
 Added Options page along with one option.  Which dictates whether a tab (or

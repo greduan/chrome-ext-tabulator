@@ -78,12 +78,13 @@ li {
 	cursor: pointer;
 }
 
-a, a:visited {
+.link, .link:visited {
 	color: blue;
 	text-decoration: none;
 	padding: .2em;
 }
-a:hover {
+.link:hover {
+	cursor: pointer;
 	text-decoration: underline;
 }
 
