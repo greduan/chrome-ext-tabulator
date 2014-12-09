@@ -80,8 +80,10 @@
                         m('span.restore-all', { onclick: function () {
                             var i;
 
-                            // reason this goes first and not after is because it doesn't work otherwise
-                            // I imagine it's because you changed tab and stuff
+                            // reason this goes before opening the tabs and not
+                            // after is because it doesn't work otherwise
+                            // I imagine it's because you changed tab and so
+                            // that messes with the focus of the JS somehow...
                             if (opts.deleteTabOnOpen === 'yes') {
                                 tabs.vm.rmGroup(i);
                             }
