@@ -1,5 +1,13 @@
 # Tabulator
 
+---
+
+THIS PROJECT IS PERMANENTLY SUSPENDED.  For the foreseeable future at least.
+Reason being that I no longer use Chromium, and I haven't since 2014.  Feel
+free to fork it and finish making it, or put your own touch on it. :)
+
+---
+
 [![Gratipay (Gittip) for Greduan](http://img.shields.io/gratipay/Greduan.svg)](https://gratipay.com/Greduan/)
 
 Like OneTab but leaner and FOSS.  Named "Tabulator".
