@@ -6,7 +6,8 @@
         var tabs = {}, // to-be module
             tabGroups = storage.tabGroups || [], // tab groups
             opts = storage.options || {
-                deleteTabOnOpen: 'no'
+				deleteTabOnOpen: 'no',
+				closePinnedTabs: 'no'
             };
 
         function saveTabGroups(json) {
