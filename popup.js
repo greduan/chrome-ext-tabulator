@@ -8,7 +8,7 @@
 
 			var query = {
 				currentWindow: true,
-				pinned: storage.options.closePinnedTabs === 'yes' ? true : false
+				pinned: storage.options && storage.options.closePinnedTabs && storage.options.closePinnedTabs === 'yes' ? true : false
 			};
 
 			chrome.tabs.query( query, function (tabsArr) {
