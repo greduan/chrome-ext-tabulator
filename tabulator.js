@@ -15,6 +15,7 @@
 
 	// filters tabGroup for stuff like pinned tabs, chrome:// tabs, etc.
 	function filterTabGroup(tabGroup) {
+		// TODO
 		return tabGroup;
 	}
 

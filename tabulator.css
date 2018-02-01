@@ -8,6 +8,7 @@
 }
 
 .group-title {
+	position: relative;
 	margin-bottom: .5em;
 }
 
@@ -55,6 +56,11 @@ ul.tab-groups img {
 	border-radius: 1em;
 	padding: 0 .3em;
 	margin-right: 10px;
+}
+.group-title .delete-link {
+	position: absolute;
+	left: -1.5em;
+	top: .5em;
 }
 .delete-link:before {
 	content: "×";
