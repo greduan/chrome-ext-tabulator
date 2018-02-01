@@ -3,7 +3,11 @@
   "name": "Tabulator",
   "version": "0.7.0",
   "description": "Like OneTab but leaner and FOSS",
-  "icons": {},
+  "icons": {
+	 "128": "images/icon128.png",
+	 "16": "images/icon16.png",
+	 "48": "images/icon48.png"
+  },
   "browser_action": {
     "default_popup": "popup.html",
     "default_title": "Tabulator"
