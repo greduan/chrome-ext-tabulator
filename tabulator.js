@@ -26,7 +26,7 @@
 
 			if (storage.tabGroups) {
 				newArr = storage.tabGroups;
-				newArr.push(tabGroup);
+				newArr.unshift(tabGroup);
 
 				chrome.storage.sync.set({ tabGroups: newArr });
 			} else {
