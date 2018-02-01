@@ -1,37 +1,33 @@
 # Tabulator
 
----
+### Tabulator is a free open-source light-weight alternative to OneTab
 
-THIS PROJECT IS PERMANENTLY SUSPENDED.  For the foreseeable future at least.
-Reason being that I no longer use Chromium, and I haven't since 2014.  Feel
-free to fork it and finish making it, or put your own touch on it. :)
+Tabulator is a free Google Chrome extension that helps reduce tab clutter and memory usage by saving all your open tabs into lists which can be restored at another time.
 
----
+## Features
 
-[![Gratipay (Gittip) for Greduan](http://img.shields.io/gratipay/Greduan.svg)](https://gratipay.com/Greduan/)
+- Light and fast, small footprint and low CPU usage
+- Syncs across devices
+- Very easy to use
 
-Like OneTab but leaner and FOSS.  Named "Tabulator".
 
-It started out with the idea of being a OneTab clone where I would release the
-source code but immediately I found stuff I could do better and lighter than
-OneTab.  For example OneTab runs constantly, while this runs only when it's
-called or the tab groups page is displayed.  (Event pages [this] vs. persistent
-background page [OneTab].)
-
-Currently it is near to completion but still in development, stuff might break.
-
-I am not yet going to provide usage or installation instructions as this is not
-yet ready for use, and at this point if you want to use it you really should be
-the kind of user who knows how to do this already. :)
-
-A screenshot of the semi-current progress:
+## Screenshot
 
 ![Screenshot of the groups page](/images/screenshot.jpg)
+
+
+## Credits
+
+- [Eduardo Lavaque][el]: Original code
+- [Xavi Esteve][xe]: New features, improvements, bug fixes
+
 
 ## License
 
 This project is licensed under the [permissive][per] [ISC license][lic].  You
 can find the license information in this project in the `LICENSE` file.
 
+[xe]: https://xaviesteve.com/
+[el]: https://github.com/Greduan/chrome-ext-tabulator
 [per]: https://en.wikipedia.org/wiki/Permissive_free_software_licence
 [lic]: https://en.wikipedia.org/wiki/ISC_license

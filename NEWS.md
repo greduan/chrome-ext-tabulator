@@ -2,6 +2,14 @@
 
 All changes that would affect users will be listed in this file.
 
+## 1.0.0 - 2018-02-01 (@luckyshot fork from @greduan)
+
+You can now choose to keep pinned tabs open
+
+Small design tweaks
+
+Added logo and icons
+
 ## 0.7.0-alpha - 2014-11-26
 
 Fixed some bugs with which tab gets open.  Changed approach to opening a link
@@ -27,7 +35,7 @@ account for the async nature of `chrome.storage.sync`.
 
 This version got a change name.  No more "Tabs Should Rest", now it's called
 "Tabulator".  Look up the definitions and etymology for "tabulate" (verb) and
-you may I understand why I chose that name.
+you may understand why I chose that name.
 
 The code also got some refactoring.  The links for tab groups now show a favicon
 next to the title/URL.  I do still need to add some kind of caching mechanism
