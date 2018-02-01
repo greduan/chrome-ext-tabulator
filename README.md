@@ -4,16 +4,14 @@
 
 Tabulator is a free Google Chrome extension that helps reduce tab clutter and memory usage by saving all your open tabs into lists which can be restored at another time.
 
+![Screenshot of the button, Dashboard and Options pages](/images/screenshot.png)
+
+
 ## Features
 
 - Light and fast, small footprint and low CPU usage
 - Syncs across devices
 - Very easy to use
-
-
-## Screenshot
-
-![Screenshot of the groups page](/images/screenshot.jpg)
 
 
 ## Credits
