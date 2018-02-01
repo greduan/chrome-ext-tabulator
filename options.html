@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tabulator Options</title>
+	<title>Tabulator · Options</title>
 	<link rel="stylesheet" href="assets/reset.min.css">
+	<link rel="stylesheet" href="base.css">
 	<link rel="stylesheet" href="options.css">
 	<script src="assets/prefixfree.min.js"></script>
 </head>
 <body>
 	<div id="container">
 		<header>
-			<h1>Tabulator <span style="font-size: .6em;">Options</span></h1>
+			<h1>Tabulator <small>Options</small></h1>
 		</header>
 
 		<div id="options">
@@ -25,19 +26,22 @@
 			</div>
 			<div class="option">
 				<div class="desc">
-					<p>Close pinned tabs:</p>
+					<p>On saving tabs:</p>
 				</div>
 				<div class="choices">
 					<p><label for="closePinnedTabs"><input type="radio" name="closePinnedTabs" value="yes"> Close pinned tabs too</label></p>
-					<p><label for="closePinnedTabs"><input type="radio" name="closePinnedTabs" value="no"> Leave them open</label></p>
+					<p><label for="closePinnedTabs"><input type="radio" name="closePinnedTabs" value="no"> Leave pinned tabs open</label></p>
 				</div>
 			</div>
-			<button name="save">Save options</button>
+			<button name="save" class="button button-wide">Save options</button>
 			<div id="saved">Options saved.</div>
 		</div>
 
 		<footer role="contentinfo">
-			The source code for Tabulator is available at <a href="https://github.com/Greduan/chrome-ext-tabulator">GitHub</a>.
+			<p><small>
+				<a href="/tabulator.html">Dashboard</a> &nbsp;&nbsp;&nbsp;
+				<a href="https://github.com/Greduan/chrome-ext-tabulator">Source</a>
+			</small></p>
 		</footer>
 	</div>
 

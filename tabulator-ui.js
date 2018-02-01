@@ -63,7 +63,7 @@
 
         tabs.view = function () {
             if (tabs.vm.list.length === 0) {
-                return m('p', 'No tab groups have been saved yet, or you deleted them all...');
+                return m('p', 'No tabs');
             }
 
             // foreach tab group
@@ -74,11 +74,11 @@
                         m('span.delete-link', { onclick: function () {
                             tabs.vm.rmGroup(i);
                         } }),
+                        m('span.group-date', moment(group.date()).format('YYYY-MM-DD HH:mm:ss')),
+                        ' ',
                         m('span.group-amount', group.tabs().length + ' Tabs'),
                         ' ',
-                        m('span.group-date', moment(group.date()).format('HH:mm:ss, YYYY-MM-DD')),
-                        ' ',
-                        m('span.restore-all', { onclick: function () {
+                        m('span.restore-all.button.button-small', { onclick: function () {
                             var i;
 
                             // reason this goes before opening the tabs and not
@@ -95,11 +95,11 @@
                                     pinned: group.tabs()[i].pinned
                                 });
                             }
-                        } }, 'Restore group')
+                        } }, 'Restore all')
                     ]),
 
                     // foreach tab
-                    m('ul', group.tabs().map(function (tab, ii) {
+                    m('ul.tab-groups', group.tabs().map(function (tab, ii) {
                         return m('li', [
                             m('span.delete-link', { onclick: function () {
                                 tabs.vm.rmTab(i, ii);
@@ -115,7 +115,8 @@
                                     url: tab.url,
                                     pinned: tab.pinned
                                 });
-                            } }, tab.title)
+                            },
+						 	title: tab.url }, tab.title)
                         ]);
                     }))
                 ]);
