@@ -4,7 +4,7 @@
 	// from the array of Tab objects it makes an object with date and the array
 	function makeTabGroup(tabsArr) {
 		var tabGroup = {
-			date: new Date(),
+			date: new Date().getTime(),
 			id: Date.now() // clever way to quickly get a unique ID
 		};
 
