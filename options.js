@@ -34,7 +34,7 @@
             document.getElementById('saved').style.display = 'block';
             window.setTimeout(function () {
                 document.getElementById('saved').style.display = 'none';
-            }, 1000);
+            }, 2000);
         });
     });
 

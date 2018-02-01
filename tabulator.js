@@ -45,7 +45,7 @@
 
         chrome.tabs.remove(tabsToClose, function () {
             if (chrome.runtime.lastError) {
-                console.error(chrome.runtime.lastError)
+                console.error(chrome.runtime.lastError);
             }
         });
     }
