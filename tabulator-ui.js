@@ -76,7 +76,7 @@
                         } }),
                         m('span.group-date', { title: moment(group.date()).format('MMMM Do YYYY, H:mm') }, moment(group.date()).fromNow() ),
                         ' ',
-                        m('span.group-amount', group.tabs().length + ' Tabs'),
+                        m('span.group-amount', group.tabs().length + ' tab' + (group.tabs().length===1?'':'s')),
                         ' ',
                         m('span.restore-all.button.button-small', { onclick: function () {
                             var i;
