@@ -9,6 +9,11 @@
 .group-title {
 	position: relative;
 	margin-bottom: .5em;
+
+	opacity: .5;
+}
+.group:hover .group-title {
+	opacity: 1;
 }
 
 .group:first-of-type {
@@ -31,7 +36,6 @@
 
 
 ul {
-	margin-left: 1em;
 }
 
 li {
