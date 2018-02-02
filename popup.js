@@ -7,9 +7,9 @@
 		chrome.storage.sync.get('options', function (storage) {
 
 			var query = {
-				currentWindow: true,
-				pinned: storage.options && storage.options.closePinnedTabs && storage.options.closePinnedTabs === 'yes' ? true : false
-			};
+					currentWindow: true,
+					pinned: storage.options && storage.options.closePinnedTabs && storage.options.closePinnedTabs === 'yes' ? true : false
+				};
 
 			chrome.tabs.query( query, function (tabsArr) {
 				chrome.runtime.sendMessage({ action: 'save', tabsArr: tabsArr }, function (res) {

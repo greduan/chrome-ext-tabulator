@@ -4,9 +4,9 @@
 	// from the array of Tab objects it makes an object with date and the array
 	function makeTabGroup(tabsArr) {
 		var tabGroup = {
-			date: new Date().getTime(),
-			id: Date.now() // clever way to quickly get a unique ID
-		};
+				date: new Date().getTime(),
+				id: Date.now() // clever way to quickly get a unique ID
+			};
 
 		tabGroup.tabs = tabsArr;
 
@@ -67,17 +67,17 @@
 	chrome.runtime.onMessage.addListener(function (req, sender, sendRes) {
 		switch (req.action) {
 			case 'save':
-				saveTabs(req.tabsArr);
-				openBackgroundPage(); // opening now so window doesn't close
-				closeTabs(req.tabsArr);
-				sendRes('ok'); // acknowledge
+			saveTabs(req.tabsArr);
+			openBackgroundPage(); // opening now so window doesn't close
+			closeTabs(req.tabsArr);
+			sendRes('ok'); // acknowledge
 			break;
 			case 'openbackgroundpage':
-				openBackgroundPage();
-				sendRes('ok'); // acknowledge
+			openBackgroundPage();
+			sendRes('ok'); // acknowledge
 			break;
 			default:
-				sendRes('nope'); // acknowledge
+			sendRes('nope'); // acknowledge
 			break;
 		}
 	});
