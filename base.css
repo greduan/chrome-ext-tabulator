@@ -19,6 +19,13 @@ a {
 	color: #2196f3;
 }
 
+.logo-background {
+	position: absolute;
+	right: 30px;
+	bottom: 30px;
+	opacity: .3;
+}
+
 .button {
 	background: #2196f321;
 	padding: 10px 20px;

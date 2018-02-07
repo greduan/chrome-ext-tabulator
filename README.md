@@ -1,4 +1,4 @@
-# Tabulator
+# <img src="images/icon48.png" alt="Tabulator icon"> Tabulator
 
 ### Tabulator is a free open-source light-weight alternative to OneTab
 
