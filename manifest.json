@@ -22,6 +22,7 @@
 		"activeTab",
 		"storage",
 		"unlimitedStorage",
+		"chrome://favicon/",
 		"contextMenus"
 	]
 }

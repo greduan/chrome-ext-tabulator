@@ -1,7 +1,7 @@
 ;(function (m) {
 	'use strict';
 
-	chrome.storage.sync.get(function (storage) {
+	chrome.storage.local.get(function (storage) {
 
 		var tabs = {}, // to-be module
 			tabGroups = storage.tabGroups || [], // tab groups
@@ -11,7 +11,7 @@
 			};
 
 		function saveTabGroups(json) {
-			chrome.storage.sync.set({ tabGroups: json });
+			chrome.storage.local.set({ tabGroups: json });
 		}
 
 		// model entity
@@ -104,7 +104,7 @@
 							m('span.delete-link', { onclick: function () {
 								tabs.vm.rmTab(i, ii);
 							} }),
-							m('img', { src: tab.favIconUrl, height: '16', width: '16' }),
+							m('img', { src: "chrome://favicon/" + tab.url, height: '16', width: '16' }),
 							' ',
 							m('span.link', { onclick: function () {
 								if (opts.deleteTabOnOpen === 'yes') {

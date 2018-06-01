@@ -27,9 +27,9 @@ thing after the tab group date.
 
 ## 0.5.0-alpha - 2014-11-20
 
-Just some changes to the code.  It now saves tab groups to `chrome.storage.sync`
+Just some changes to the code.  It now saves tab groups to `chrome.storage.local`
 instead of `localStorage`.  The changes to the code had to be made in order to
-account for the async nature of `chrome.storage.sync`.
+account for the async nature of `chrome.storage.local`.
 
 ## 0.4.0-alpha - 2014-11-19
 
