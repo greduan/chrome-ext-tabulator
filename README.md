@@ -16,8 +16,9 @@ Tabulator is a free Google Chrome extension that helps reduce tab clutter and me
 
 ## Credits
 
-- [Eduardo Lavaque][el]: Original code
-- [Xavi Esteve][xe]: New features, improvements, bug fixes
+- [Eduardo Lavaque][el] (@Greduan): Original code
+- [Xavi Esteve][xe] (@luckyshot): New features, improvements, bug fixes
+- [Jared Forsyth][jf] (@jaredly): New features, improvements, bug fixes
 
 
 ## License
@@ -27,5 +28,6 @@ can find the license information in this project in the `LICENSE` file.
 
 [xe]: https://xaviesteve.com/
 [el]: https://github.com/Greduan/chrome-ext-tabulator
+[jf]: http://jaredforsyth.com
 [per]: https://en.wikipedia.org/wiki/Permissive_free_software_licence
 [lic]: https://en.wikipedia.org/wiki/ISC_license
