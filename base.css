@@ -1,0 +1,97 @@
+/**/
+/* GENERAL STYLES */
+/**/
+
+body {
+	background: #fefefe;
+	color: #333;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+#container {
+	margin: 3em;
+	padding: 5px;
+	font-family: 'Helvetica Neue', Liberation Sans, sans-serif;
+}
+
+a {
+	color: #2196f3;
+}
+
+.logo-background {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	opacity: .3;
+}
+
+.button {
+	background: #2196f321;
+	padding: 10px 20px;
+	border: none;
+	border-bottom: 1px solid #2196f321;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
+}
+.button:active {
+	border-top: 1px solid white;
+	border-bottom: 0;
+	vertical-align: -1px;
+}
+.button:hover {
+	opacity: .9;
+}
+
+.button-wide {
+	padding: 10px 100px;
+}
+.button-small {
+	font-size: 0.8em;
+	padding: 0.3em 0.8em;
+}
+
+.alert {
+	width: 300px;
+	margin-top: 15px;
+	padding: .3em .6em;
+	text-align: center;
+	border-radius: 5px;
+}
+.alert-success {
+	color: #8BC34A;
+	background: #8bc34a1f;
+}
+
+
+/**/
+/* HEADER STYLES */
+/**/
+
+h1 {
+	font-size: 3em;
+}
+h1 small {
+	font-size: .6em;
+	color: #666;
+}
+
+header {
+	border-bottom: 1px solid #f6f6f6;
+}
+
+/**/
+/* FOOTER STYLES */
+/**/
+
+footer {
+	border-top: 1px solid #f6f6f6;
+	padding: 5px 0;
+	margin-top: 50px;
+	color: #666;
+}
+footer a {
+	text-decoration: none;
+	color: inherit;
+}
