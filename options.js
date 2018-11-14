@@ -30,12 +30,24 @@
 			id: Date.now() - i,
 			date: Date.now(),
 		}));
-		// console.log(newGroups)
-		chrome.storage.local.get('tabGroups', storage => {
-			const groups = storage.tabGroups || [];
-			chrome.storage.local.set({tabGroups: newGroups.concat(groups)})
-		})
-	})
+        // console.log(newGroups)
+        chrome.storage.local.get('tabGroups', storage => {
+            const groups = storage.tabGroups || [];
+            chrome.storage.local.set({
+                    tabGroups: newGroups.concat(groups)
+                },
+
+
+                function() { // show "Import successful" notice thing
+                    document.getElementById('imported').style.display = 'block';
+                    window.setTimeout(function() {
+                        document.getElementById('imported').style.display = 'none';
+                    }, 2000);
+                }
+
+            )
+        })
+    })
 
 	document.getElementsByName('save')[0].addEventListener('click', function () {
 		var deleteTabOnOpen = document.querySelector('input[name="deleteTabOnOpen"]:checked').value;
