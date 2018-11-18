@@ -42,10 +42,14 @@
 				};
 
 				vm.rmTab = function (i, ii) {
-					// remove from view array
-					//vm.list[i].tabs().splice(ii, 1);
 					// remove from localStorage
 					tabGroups[i].tabs.splice(ii, 1);
+					// Remove the group if empty.
+					if (tabGroups[i].tabs.length === 0) {
+						vm.rmGroup(i);
+						// We fall-through here even if rmGroup
+						// already saves the tab groups.
+					}
 					// save
 					saveTabGroups(tabGroups);
 				};
