@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Tabulator · Dashboard</title>
-	<link rel="stylesheet" href="assets/reset.min.css">
-	<link rel="stylesheet" href="base.css">
-	<link rel="stylesheet" href="tabulator.css">
-	<script src="assets/prefixfree.min.js"></script>
-	<script src="tabulator.js"></script>
-	<link rel="shortcut icon" href="images/icon16.png">
-</head>
-<body>
-	<div id="container">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tabulator · Dashboard</title>
+    <link rel="stylesheet" href="assets/reset.min.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="tabulator.css" />
+    <script src="assets/prefixfree.min.js"></script>
+    <script src="tabulator.js"></script>
+    <link rel="shortcut icon" href="images/icon16.png" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>Tabulator <small>Dashboard</small></h1>
+      </header>
 
-		<header>
-			<h1>Tabulator <small>Dashboard</small></h1>
-		</header>
+      <div id="groups"><!-- --></div>
 
-		<div id="groups"><!-- --></div>
+      <footer role="contentinfo">
+        <p>
+          <small> <a href="/options.html">Options</a> </small>
+        </p>
+      </footer>
+    </div>
 
-		<footer role="contentinfo">
-			<p><small>
-				<a href="/options.html">Options</a>
-			</small></p>
-		</footer>
-	</div>
+    <img
+      class="logo-background"
+      src="images/icon128.png"
+      alt="Tabulator icon"
+    />
 
-	<img class="logo-background" src="images/icon128.png" alt="Tabulator icon">
-
-	<script src="assets/mithril.min.js"></script>
-	<script src="assets/moment.min.js"></script>
-	<script src="tabulator-ui.js"></script>
-</body>
+    <script src="assets/mithril.min.js"></script>
+    <script src="assets/moment.min.js"></script>
+    <script src="tabulator-ui.js"></script>
+  </body>
 </html>

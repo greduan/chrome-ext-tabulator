@@ -1,58 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Tabulator · Options</title>
-	<link rel="stylesheet" href="assets/reset.min.css">
-	<link rel="stylesheet" href="base.css">
-	<link rel="stylesheet" href="options.css">
-	<script src="assets/prefixfree.min.js"></script>
-	<link rel="shortcut icon" href="images/icon16.png">
-</head>
-<body>
-	<div id="container">
-		<header>
-			<h1>Tabulator <small>Options</small></h1>
-		</header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tabulator · Options</title>
+    <link rel="stylesheet" href="assets/reset.min.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="options.css" />
+    <script src="assets/prefixfree.min.js"></script>
+    <link rel="shortcut icon" href="images/icon16.png" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>Tabulator <small>Options</small></h1>
+      </header>
 
-		<div id="options">
-			<div class="option">
-				<div class="desc">
-					<p>On clicking "Restore group" or restoring a single tab:</p>
-				</div>
-				<div class="choices">
-					<p><label for="deleteTabOnOpen"><input type="radio" name="deleteTabOnOpen" value="yes"> Delete opened links from tab groups</label></p>
-					<p><label for="deleteTabOnOpen"><input type="radio" name="deleteTabOnOpen" value="no"> Leave the links alone</label></p>
-				</div>
-			</div>
-			<div class="option">
-				<div class="desc">
-					<p>On saving tabs:</p>
-				</div>
-				<div class="choices">
-					<p><label for="closePinnedTabs"><input type="radio" name="closePinnedTabs" value="yes"> Close pinned tabs too</label></p>
-					<p><label for="closePinnedTabs"><input type="radio" name="closePinnedTabs" value="no"> Keep pinned tabs open</label></p>
-				</div>
-			</div>
-			<button name="save" class="button button-wide">Save options</button>
-			<div id="saved" class="alert alert-success">Options saved</div>
-		</div>
+      <div id="options">
+        <div class="option">
+          <div class="desc">
+            <p>On clicking "Restore group" or restoring a single tab:</p>
+          </div>
+          <div class="choices">
+            <p>
+              <label for="deleteTabOnOpen">
+                <input type="radio" name="deleteTabOnOpen" value="yes" /> Delete
+                opened links from tab groups
+              </label>
+            </p>
+            <p>
+              <label for="deleteTabOnOpen"
+                ><input type="radio" name="deleteTabOnOpen" value="no" /> Leave
+                the links alone</label
+              >
+            </p>
+          </div>
+        </div>
+        <div class="option">
+          <div class="desc"><p>On saving tabs:</p></div>
+          <div class="choices">
+            <p>
+              <label for="closePinnedTabs"
+                ><input type="radio" name="closePinnedTabs" value="yes" /> Close
+                pinned tabs too</label
+              >
+            </p>
+            <p>
+              <label for="closePinnedTabs"
+                ><input type="radio" name="closePinnedTabs" value="no" /> Keep
+                pinned tabs open</label
+              >
+            </p>
+          </div>
+        </div>
+        <button name="save" class="button button-wide">Save options</button>
+        <div id="saved" class="alert alert-success">Options saved</div>
+      </div>
 
-		<textarea id="import-text"></textarea>
-		<button id="import">Import</button>
-		<div id="imported" class="alert alert-success">Import successful</div>
-		
-		<footer role="contentinfo">
-			<p><small>
-				<a href="/tabulator.html">Dashboard</a> &nbsp;&nbsp;&nbsp;
-				<a href="https://github.com/greduan/chrome-ext-tabulator" target="_blank">Source</a>
-			</small></p>
-		</footer>
-	</div>
+      <textarea id="import-text"></textarea> <button id="import">Import</button>
+      <div id="imported" class="alert alert-success">Import successful</div>
 
-	<img class="logo-background" src="images/icon128.png" alt="Tabulator icon">
+      <footer role="contentinfo">
+        <p>
+          <small>
+            <a href="/tabulator.html">Dashboard</a> &nbsp;&nbsp;&nbsp;
+            <a
+              href="https://github.com/greduan/chrome-ext-tabulator"
+              target="_blank"
+              >Source</a
+            >
+          </small>
+        </p>
+      </footer>
+    </div>
 
-	<script src="assets/jquery.min.js"></script>
-	<script src="options.js"></script>
-</body>
+    <img
+      class="logo-background"
+      src="images/icon128.png"
+      alt="Tabulator icon"
+    />
+
+    <script src="assets/jquery.min.js"></script>
+    <script src="options.js"></script>
+  </body>
 </html>
