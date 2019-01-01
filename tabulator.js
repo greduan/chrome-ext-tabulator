@@ -174,49 +174,49 @@
     });
 
     //#region Context Menus
+    chrome.runtime.onInstalled.addListener(function () {
+     chrome.contextMenus.create({
+         title: 'Tabulator',
+         type: 'normal',
+         id: 'main',
+         contexts: ['page']
+     });
+     chrome.contextMenus.create({
+         title: 'Open Tabulator',
+         type: 'normal',
+         id: 'backgroundPage',
+         contexts: ['page'],
+         parentId: 'main'
+     });
+     chrome.contextMenus.create({
+         type: 'separator',
+         id: 'separator0',
+         contexts: ['page'],
+         parentId: 'main'
+     });
+     chrome.contextMenus.create({
+         title: 'Save all but active',
+         type: 'normal',
+         id: 'saveAllButActive',
+         contexts: ['page'],
+         parentId: 'main'
+     });
+     chrome.contextMenus.create({
+         title: 'Save open tabs',
+         type: 'normal',
+         id: 'saveOpenTabs',
+         contexts: ['page'],
+         parentId: 'main'
+     });
+     chrome.contextMenus.create({
+         title: 'Save active tab',
+         type: 'normal',
+         id: 'saveActiveTab',
+         contexts: ['page'],
+         parentId: 'main'
+     });
 
-    chrome.contextMenus.create({
-        title: 'Tabulator',
-        type: 'normal',
-        id: 'main',
-        contexts: ['page']
-    });
-    chrome.contextMenus.create({
-        title: 'Open Tabulator',
-        type: 'normal',
-        id: 'backgroundPage',
-        contexts: ['page'],
-        parentId: 'main'
-    });
-    chrome.contextMenus.create({
-        type: 'separator',
-        id: 'separator0',
-        contexts: ['page'],
-        parentId: 'main'
-    });
-    chrome.contextMenus.create({
-        title: 'Save all but active',
-        type: 'normal',
-        id: 'saveAllButActive',
-        contexts: ['page'],
-        parentId: 'main'
-    });
-    chrome.contextMenus.create({
-        title: 'Save open tabs',
-        type: 'normal',
-        id: 'saveOpenTabs',
-        contexts: ['page'],
-        parentId: 'main'
-    });
-    chrome.contextMenus.create({
-        title: 'Save active tab',
-        type: 'normal',
-        id: 'saveActiveTab',
-        contexts: ['page'],
-        parentId: 'main'
-    });
-
-    chrome.contextMenus.onClicked.addListener(function(itemData,tab) {
+   chrome.contextMenus.onClicked.addListener(function(itemData,tab) {
         if (itemData.menuItemId === 'test') {
             getTabs(itemData, tab);
         } else if (itemData.menuItemId === 'backgroundPage') {
@@ -231,8 +231,8 @@
             openOptionsPage();
         }
     });
-
-    //#endregion
+   });
+   //#endregion
 
 }());
 //TODO: Add option to save tabs from context menu.
