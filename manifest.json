@@ -9,14 +9,14 @@
 		"48": "images/icon48.png"
 	},
 	"browser_action": {
-		"default_popup": "popup.html",
+		"default_popup": "src/popup/popup.html",
 		"default_title": "Tabulator"
 	},
 	"background": {
-		"page": "tabulator.html",
+		"page": "src/tabulator/tabulator.html",
 		"persistent": false
 	},
-	"options_page": "options.html",
+	"options_page": "src/options/options.html",
 	"permissions": [
 		"tabs",
 		"activeTab",

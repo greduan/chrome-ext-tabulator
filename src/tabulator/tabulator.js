@@ -96,7 +96,7 @@
   }
 
   function saveAllTabs() {
-    const myUrl = chrome.extension.getURL('tabulator.html');
+    const myUrl = chrome.extension.getURL('/src/tabulator/tabulator.html');
     chrome.tabs.query({ currentWindow: true }, function(tabsArr) {
       const tabsToSave = tabsArr.filter(tab => tab.url !== myUrl);
       saveTabs(tabsToSave);
@@ -107,7 +107,7 @@
   }
 
   function saveAllButActive() {
-    const myUrl = chrome.extension.getURL('tabulator.html');
+    const myUrl = chrome.extension.getURL('/src/tabulator/tabulator.html');
     chrome.tabs.query({ currentWindow: true, active: false }, function(
       tabsArr
     ) {
@@ -129,7 +129,7 @@
   }
 
   const openBackgroundPageIfNeeded = done => {
-    const myUrl = chrome.extension.getURL('tabulator.html');
+    const myUrl = chrome.extension.getURL('/src/tabulator/tabulator.html');
     chrome.tabs.query({ url: myUrl }, function(tabsArr) {
       if (tabsArr.length == 0) {
         chrome.tabs.create({ url: myUrl });
@@ -143,11 +143,11 @@
   };
 
   function openBackgroundPage() {
-    chrome.tabs.create({ url: chrome.extension.getURL('tabulator.html') });
+    chrome.tabs.create({ url: chrome.extension.getURL('/src/tabulator/tabulator.html') });
   }
 
   function openOptionsPage() {
-    chrome.tabs.create({ url: chrome.extension.getURL('options.html') });
+    chrome.tabs.create({ url: chrome.extension.getURL('/src/options/options.html') });
   }
 
   // listen for messages from popup
