@@ -21,7 +21,7 @@ another time.
 
 ## License
 
-This project is licensed under the [permissive][per] [ISC license][lic].  You
+This project is licensed under the [permissive][per] [ISC license][lic]. You
 can find the license information in this project in the `LICENSE` file.
 
 [xe]: https://xaviesteve.com

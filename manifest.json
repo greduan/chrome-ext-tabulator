@@ -1,28 +1,28 @@
 {
-	"manifest_version": 2,
-	"name": "Tabulator",
-	"version": "1.0.0",
-	"description": "Tabulator is a free open-source OpenTab alternative that helps reduce tab clutter and memory usage by saving all your open tabs into lists which can be restored at another time",
-	"icons": {
-		"128": "images/icon128.png",
-		"16": "images/icon16.png",
-		"48": "images/icon48.png"
-	},
-	"browser_action": {
-		"default_popup": "src/popup/popup.html",
-		"default_title": "Tabulator"
-	},
-	"background": {
-		"page": "src/tabulator/tabulator.html",
-		"persistent": false
-	},
-	"options_page": "src/options/options.html",
-	"permissions": [
-		"tabs",
-		"activeTab",
-		"storage",
-		"unlimitedStorage",
-		"chrome://favicon/",
-		"contextMenus"
-	]
+  "manifest_version": 2,
+  "name": "Tabulator",
+  "version": "1.0.0",
+  "description": "Tabulator is a free open-source OpenTab alternative that helps reduce tab clutter and memory usage by saving all your open tabs into lists which can be restored at another time",
+  "icons": {
+    "128": "images/icon128.png",
+    "16": "images/icon16.png",
+    "48": "images/icon48.png"
+  },
+  "browser_action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Tabulator"
+  },
+  "background": {
+    "page": "src/tabulator/tabulator.html",
+    "persistent": false
+  },
+  "options_page": "src/options/options.html",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "unlimitedStorage",
+    "chrome://favicon/",
+    "contextMenus"
+  ]
 }
