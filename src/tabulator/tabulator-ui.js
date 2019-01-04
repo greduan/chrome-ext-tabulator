@@ -1,3 +1,6 @@
+var moment = require('moment');
+var m = require('mithril');
+
 chrome.storage.local.get(function(storage) {
   var tabs = {}, // to-be module
     tabGroups = storage.tabGroups || [], // tab groups

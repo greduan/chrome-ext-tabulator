@@ -10,6 +10,9 @@
     "pretty-quick": "^1.8.0"
   },
   "dependencies": {
+    "jquery": "^3.3.1",
+    "mithril": "0.1",
+    "moment": "^2.23.0",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.0"
   }

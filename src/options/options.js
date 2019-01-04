@@ -1,4 +1,4 @@
-var $ = jQuery;
+var $ = require('jquery');
 
 var opts = {};
 
