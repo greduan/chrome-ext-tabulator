@@ -13,6 +13,19 @@ another time.
 - Light and fast, small footprint and low CPU usage.
 - Very easy to use.
 
+## Development
+
+First you must build the JS files:
+
+```sh
+nvm i   # will use .nvmrc version
+nvm use # will use .nvmrc version
+yarn
+npx webpack
+```
+
+Then you can load it as an unbundled extension in Chromium.
+
 ## Credits
 
 - [Eduardo Lavaque][el] (@greduan): Original code and ongoing support
