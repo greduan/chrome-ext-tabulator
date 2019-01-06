@@ -1,55 +1,3 @@
-function getWord(info, tab) {
-  console.log('Word ' + info.selectionText + ' was clicked.');
-  chrome.tabs.create({
-    url: 'http://www.google.com/search?q=' + info.selectionText,
-  });
-}
-
-function getTabs(info, tab) {
-  chrome.tabs.query({}, function(tabs) {
-    tabs.forEach(function(tab) {
-      console.log(tab.url);
-    });
-  });
-}
-
-// from the array of Tab objects it makes an object with date and the array
-function makeTabGroup(tabsArr) {
-  return {
-    date: Date.now(),
-    id: Date.now(), // clever way to quickly get a unique ID
-    title: '',
-    tabs: tabsArr.map(tab => ({
-      url: tab.url,
-      title: tab.title,
-      pinned: tab.pinned,
-    })),
-  };
-}
-
-// filters tabGroup for stuff like pinned tabs, chrome:// tabs, etc.
-function filterTabGroup(tabGroup) {
-  tabGroup.tabs = filterTabs(tabGroup.tabs);
-  return tabGroup;
-}
-
-function filterTabs(tabsArr) {
-  console.log(Options);
-  var filteredTabs = [];
-
-  tabsArr.forEach(tab => {
-    if (tab.pinned) {
-      if (Options.includePinnedTabs == 'yes') {
-        filteredTabs.push(tab);
-      }
-    } else {
-      filteredTabs.push(tab);
-    }
-  });
-
-  return filteredTabs;
-}
-
 // saves array (of Tab objects) to localStorage
 function saveTabGroup(tabGroup) {
   chrome.storage.local.get('tabGroups', function(storage) {
@@ -66,18 +14,19 @@ function saveTabGroup(tabGroup) {
   });
 }
 
-// close all the tabs in the provided array of Tab objects
+const filterTab = tab => {
+  const includePinnedTabs = Options.includePinnedTabs === 'yes';
+
+  // XXX: Should this filter out chrome:// tabs?
+
+  return !tab.pinned || includePinnedTabs;
+};
+
 function closeTabs(tabsArr) {
-  var tabsToClose = [],
-    i;
-  var filtered = filterTabs(tabsArr);
+  const tabIds = tabsArr.filter(filterTab).map(tab => tab.id);
 
-  for (i = 0; i < filtered.length; i += 1) {
-    tabsToClose.push(filtered[i].id);
-    console.log({ url: filtered[i].url, pinned: filtered[i].pinned });
-  }
-
-  chrome.tabs.remove(tabsToClose, function() {
+  chrome.tabs.remove(tabIds, () => {
+    // XXX: Is this necessary or useful?
     if (chrome.runtime.lastError) {
       console.error(chrome.runtime.lastError);
     }
@@ -86,8 +35,18 @@ function closeTabs(tabsArr) {
 
 // makes a tab group, filters it and saves it to localStorage
 function saveTabs(tabsArr) {
-  var tabGroup = makeTabGroup(tabsArr),
-    cleanTabGroup = filterTabGroup(tabGroup);
+  const tabGroup = {
+    date: Date.now(),
+    id: Date.now(),
+    title: '',
+    tabs: tabsArr
+      .map(tab => ({
+        url: tab.url,
+        title: tab.title,
+        pinned: tab.pinned,
+      }))
+      .filter(filterTab),
+  };
 
   saveTabGroup(cleanTabGroup);
 }
@@ -126,10 +85,9 @@ function saveActiveTab() {
 const openBackgroundPageIfNeeded = done => {
   const myUrl = chrome.extension.getURL('/src/tabulator/tabulator.html');
   chrome.tabs.query({ url: myUrl }, function(tabsArr) {
-    if (tabsArr.length == 0) {
+    if (tabsArr.length === 0) {
       chrome.tabs.create({ url: myUrl });
-    }
-    if (tabsArr.length) {
+    } else {
       chrome.tabs.highlight({ tabs: tabsArr[0].index });
       chrome.tabs.reload(tabsArr[0].id);
     }
@@ -225,9 +183,7 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 
   chrome.contextMenus.onClicked.addListener(function(itemData, tab) {
-    if (itemData.menuItemId === 'test') {
-      getTabs(itemData, tab);
-    } else if (itemData.menuItemId === 'backgroundPage') {
+    if (itemData.menuItemId === 'backgroundPage') {
       openBackgroundPage();
     } else if (itemData.menuItemId === 'saveAllButActive') {
       saveAllButActive();

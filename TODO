@@ -1,4 +1,3 @@
-Use Webpack or some other bundling thing, to allow code reuse and simplifciation of logic inside one file.
 Go through and clean/simplify current logic in all JS files.
 Make compatible with all browsers (that support WebExtensions).
 Remove features / streamline flows.
