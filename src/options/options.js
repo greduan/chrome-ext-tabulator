@@ -1,9 +1,11 @@
-var $ = require('jquery');
+const $ = require('jquery');
+
+const storage = require('../lib/storage');
 
 var opts = {};
 
 document.addEventListener('DOMContentLoaded', function() {
-  chrome.storage.local.get('options', function(storage) {
+  storage.get('options').then(storage => {
     var opts = storage.options || {};
 
     if (opts.deleteTabOnOpen === undefined) {
@@ -40,22 +42,16 @@ document.getElementById('import').addEventListener('click', () => {
       id: Date.now() - i,
       date: Date.now(),
     }));
-  // console.log(newGroups)
-  chrome.storage.local.get('tabGroups', storage => {
-    const groups = storage.tabGroups || [];
-    chrome.storage.local.set(
-      {
-        tabGroups: newGroups.concat(groups),
-      },
 
-      function() {
-        // show "Import successful" notice thing
-        document.getElementById('imported').style.display = 'block';
-        window.setTimeout(function() {
-          document.getElementById('imported').style.display = 'none';
-        }, 2000);
-      }
-    );
+  storage.get('tabGroups').then(storage => {
+    const groups = storage.tabGroups || [];
+    return storage.set({ tabGroups: newGroups.concat(groups) }).then(() => {
+      // show "Import successful" notice thing
+      document.getElementById('imported').style.display = 'block';
+      window.setTimeout(function() {
+        document.getElementById('imported').style.display = 'none';
+      }, 2000);
+    });
   });
 });
 
@@ -67,19 +63,18 @@ document.getElementsByName('save')[0].addEventListener('click', function() {
     'input[name="closePinnedTabs"]:checked'
   ).value;
 
-  chrome.storage.local.set(
-    {
+  storage
+    .set({
       options: {
         deleteTabOnOpen: deleteTabOnOpen,
         closePinnedTabs: closePinnedTabs,
       },
-    },
-    function() {
+    })
+    .then(() => {
       // show "settings saved" notice thing
       document.getElementById('saved').style.display = 'block';
       window.setTimeout(function() {
         document.getElementById('saved').style.display = 'none';
       }, 2000);
-    }
-  );
+    });
 });

@@ -1,7 +1,9 @@
-var moment = require('moment');
-var m = require('mithril');
+const moment = require('moment');
+const m = require('mithril');
 
-chrome.storage.local.get(function(storage) {
+const storage = require('../lib/storage');
+
+storage.get().then(storage => {
   var tabs = {}, // to-be module
     tabGroups = storage.tabGroups || [], // tab groups
     opts = storage.options || {
@@ -10,7 +12,7 @@ chrome.storage.local.get(function(storage) {
     };
 
   function saveTabGroups(json) {
-    chrome.storage.local.set({ tabGroups: json });
+    return storage.set({ tabGroups: json });
   }
 
   // model entity

@@ -1,16 +1,18 @@
+const storage = require('../lib/storage');
+
 // saves array (of Tab objects) to localStorage
 function saveTabGroup(tabGroup) {
-  chrome.storage.local.get('tabGroups', function(storage) {
-    var newArr;
+  return storage.get('tabGroups').then(storage => {
+    let newArr;
 
     if (storage.tabGroups) {
       newArr = storage.tabGroups;
       newArr.unshift(tabGroup);
-
-      chrome.storage.local.set({ tabGroups: newArr });
     } else {
-      chrome.storage.local.set({ tabGroups: [tabGroup] });
+      newArr = [tabGroup];
     }
+
+    return storage.set({ tabGroups: newArr });
   });
 }
 
@@ -133,7 +135,8 @@ chrome.runtime.onMessage.addListener(function(req, sender, sendRes) {
 });
 
 var Options = {};
-chrome.storage.local.get('options', function(storage) {
+
+storage.get('options').then(storage => {
   Options = storage.options || {
     includePinnedTabs: 'yes',
     deleteTabOnOpen: 'no',
