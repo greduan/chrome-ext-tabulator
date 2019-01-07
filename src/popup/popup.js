@@ -1,23 +1,23 @@
+const browser = require('webextension-polyfill');
+
 document
   .getElementById('save-all-but-active')
   .addEventListener('click', function() {
-    chrome.runtime.sendMessage({ action: 'saveAllButActive' }, function(res) {
-      window.close();
-    });
+    browser.runtime
+      .sendMessage({ action: 'saveAllButActive' })
+      .then(() => window.close());
   });
 
 // all tabs
 document.getElementById('save-all').addEventListener('click', function() {
-  chrome.runtime.sendMessage({ action: 'saveAll' }, function(res) {
-    window.close();
-  });
+  browser.runtime.sendMessage({ action: 'saveAll' }).then(() => window.close());
 });
 
 // open background page
 document
   .getElementById('open-background-page')
   .addEventListener('click', function() {
-    chrome.runtime.sendMessage({ action: 'openbackgroundpage' }, function(res) {
+    browser.runtime.sendMessage({ action: 'openbackgroundpage' }).then(res => {
       if (res === 'ok') {
         window.close();
       }
@@ -25,14 +25,13 @@ document
   });
 
 document.getElementById('save-active').addEventListener('click', function() {
-  chrome.tabs.query({ currentWindow: true }, function(tabsArr) {
-    chrome.runtime.sendMessage(
-      { action: 'saveActive', tabsArr: tabsArr },
-      function(res) {
+  browser.tabs.query({ currentWindow: true }, function(tabsArr) {
+    browser.runtime
+      .sendMessage({ action: 'saveActive', tabsArr: tabsArr })
+      .then(res => {
         if (res === 'ok') {
           window.close();
         }
-      }
-    );
+      });
   });
 });

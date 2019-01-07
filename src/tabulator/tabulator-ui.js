@@ -1,3 +1,4 @@
+const browser = require('webextension-polyfill');
 const moment = require('moment');
 const m = require('mithril');
 
@@ -109,7 +110,7 @@ storage.get().then(storage => {
                 }
 
                 for (i = 0; i < group.tabs().length; i += 1) {
-                  chrome.tabs.create({
+                  browser.tabs.create({
                     url: group.tabs()[i].url,
                     pinned: group.tabs()[i].pinned,
                   });
@@ -144,7 +145,7 @@ storage.get().then(storage => {
                       tabs.vm.rmTab(i, ii);
                     }
 
-                    chrome.tabs.create({
+                    browser.tabs.create({
                       url: tab.url,
                       pinned: tab.pinned,
                     });

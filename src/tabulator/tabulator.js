@@ -1,3 +1,4 @@
+const browser = require('webextension-polyfill');
 const storage = require('../lib/storage');
 
 // saves array (of Tab objects) to localStorage
@@ -27,10 +28,10 @@ const filterTab = tab => {
 function closeTabs(tabsArr) {
   const tabIds = tabsArr.filter(filterTab).map(tab => tab.id);
 
-  chrome.tabs.remove(tabIds, () => {
+  browser.tabs.remove(tabIds).then(() => {
     // XXX: Is this necessary or useful?
-    if (chrome.runtime.lastError) {
-      console.error(chrome.runtime.lastError);
+    if (browser.runtime.lastError) {
+      console.error(browser.runtime.lastError);
     }
   });
 }
@@ -54,8 +55,8 @@ function saveTabs(tabsArr) {
 }
 
 function saveAllTabs() {
-  const myUrl = chrome.extension.getURL('/src/tabulator/tabulator.html');
-  chrome.tabs.query({ currentWindow: true }, function(tabsArr) {
+  const myUrl = browser.extension.getURL('/src/tabulator/tabulator.html');
+  browser.tabs.query({ currentWindow: true }).then(tabsArr => {
     const tabsToSave = tabsArr.filter(tab => tab.url !== myUrl);
     saveTabs(tabsToSave);
     openBackgroundPageIfNeeded(() => {
@@ -65,8 +66,8 @@ function saveAllTabs() {
 }
 
 function saveAllButActive() {
-  const myUrl = chrome.extension.getURL('/src/tabulator/tabulator.html');
-  chrome.tabs.query({ currentWindow: true, active: false }, function(tabsArr) {
+  const myUrl = browser.extension.getURL('/src/tabulator/tabulator.html');
+  browser.tabs.query({ currentWindow: true, active: false }).then(tabsArr => {
     const tabsToSave = tabsArr.filter(tab => tab.url !== myUrl);
     saveTabs(tabsToSave);
     openBackgroundPageIfNeeded(() => {
@@ -76,7 +77,7 @@ function saveAllButActive() {
 }
 
 function saveActiveTab() {
-  chrome.tabs.query({ currentWindow: true, active: true }, function(tabs) {
+  browser.tabs.query({ currentWindow: true, active: true }).then(tabs => {
     saveTabs(tabs);
     openBackgroundPageIfNeeded(() => {
       closeTabs(tabs);
@@ -85,32 +86,32 @@ function saveActiveTab() {
 }
 
 const openBackgroundPageIfNeeded = done => {
-  const myUrl = chrome.extension.getURL('/src/tabulator/tabulator.html');
-  chrome.tabs.query({ url: myUrl }, function(tabsArr) {
+  const myUrl = browser.extension.getURL('/src/tabulator/tabulator.html');
+  browser.tabs.query({ url: myUrl }).then(tabsArr => {
     if (tabsArr.length === 0) {
-      chrome.tabs.create({ url: myUrl });
+      browser.tabs.create({ url: myUrl });
     } else {
-      chrome.tabs.highlight({ tabs: tabsArr[0].index });
-      chrome.tabs.reload(tabsArr[0].id);
+      browser.tabs.highlight({ tabs: tabsArr[0].index });
+      browser.tabs.reload(tabsArr[0].id);
     }
     done();
   });
 };
 
 function openBackgroundPage() {
-  chrome.tabs.create({
-    url: chrome.extension.getURL('/src/tabulator/tabulator.html'),
+  browser.tabs.create({
+    url: browser.extension.getURL('/src/tabulator/tabulator.html'),
   });
 }
 
 function openOptionsPage() {
-  chrome.tabs.create({
-    url: chrome.extension.getURL('/src/options/options.html'),
+  browser.tabs.create({
+    url: browser.extension.getURL('/src/options/options.html'),
   });
 }
 
 // listen for messages from popup
-chrome.runtime.onMessage.addListener(function(req, sender, sendRes) {
+browser.runtime.onMessage.addListener(function(req, sender, sendRes) {
   switch (req.action) {
     case 'saveAllButActive':
       saveAllButActive();
@@ -143,41 +144,41 @@ storage.get('options').then(storage => {
   };
 });
 
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.contextMenus.create({
+browser.runtime.onInstalled.addListener(function() {
+  browser.contextMenus.create({
     title: 'Tabulator',
     type: 'normal',
     id: 'main',
     contexts: ['page'],
   });
-  chrome.contextMenus.create({
+  browser.contextMenus.create({
     title: 'Open Tabulator',
     type: 'normal',
     id: 'backgroundPage',
     contexts: ['page'],
     parentId: 'main',
   });
-  chrome.contextMenus.create({
+  browser.contextMenus.create({
     type: 'separator',
     id: 'separator0',
     contexts: ['page'],
     parentId: 'main',
   });
-  chrome.contextMenus.create({
+  browser.contextMenus.create({
     title: 'Save all but active',
     type: 'normal',
     id: 'saveAllButActive',
     contexts: ['page'],
     parentId: 'main',
   });
-  chrome.contextMenus.create({
+  browser.contextMenus.create({
     title: 'Save open tabs',
     type: 'normal',
     id: 'saveOpenTabs',
     contexts: ['page'],
     parentId: 'main',
   });
-  chrome.contextMenus.create({
+  browser.contextMenus.create({
     title: 'Save active tab',
     type: 'normal',
     id: 'saveActiveTab',
@@ -185,7 +186,7 @@ chrome.runtime.onInstalled.addListener(function() {
     parentId: 'main',
   });
 
-  chrome.contextMenus.onClicked.addListener(function(itemData, tab) {
+  browser.contextMenus.onClicked.addListener(function(itemData, tab) {
     if (itemData.menuItemId === 'backgroundPage') {
       openBackgroundPage();
     } else if (itemData.menuItemId === 'saveAllButActive') {

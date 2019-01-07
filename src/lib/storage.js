@@ -1,11 +1,5 @@
-const pify = require('pify');
+const browser = require('webextension-polyfill');
 
-module.exports.get = args =>
-  new Promise((resolve, reject) => {
-    chrome.storage.local.get(args, resolve);
-  });
+module.exports.get = browser.storage.local.get;
 
-module.exports.set = args =>
-  new Promise((resolve, reject) => {
-    chrome.storage.local.set(args, resolve);
-  });
+module.exports.set = browser.storage.local.set;
