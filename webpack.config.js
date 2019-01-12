@@ -10,7 +10,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist', 'webpack'),
     filename: '[name].js',
   },
   // XXX: May have to change for publishing.

@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "sh scripts/build.sh"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
